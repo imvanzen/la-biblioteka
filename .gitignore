@@ -1,3 +1,11 @@
+# IDE
+.vscode
+.idea
+
+# System
+.DS_Store
+Thumbs.db
+
 # Prerequisites
 *.d
 
