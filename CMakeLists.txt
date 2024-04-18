@@ -3,4 +3,8 @@ project(LaBiblioteka VERSION 0.1.0 LANGUAGES C CXX)
 
 add_subdirectory(src)
 
-add_executable(la-biblioteka main.cpp)
+set(MAIN_SOURCES
+    src/main.cpp
+)
+
+add_executable(la-biblioteka ${MAIN_SOURCES}) 
