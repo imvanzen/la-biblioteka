@@ -48,5 +48,9 @@ Ten projekt jest udostępniany na licencji MIT. Szczegóły można znaleźć w p
 
 ## Kontakt
 
-Jakub Reczko
+Jakub Reczko - @imvanzen
 Jeśli masz jakiekolwiek pytania lub sugestie, skontaktuj się z nami pod adresem: reczko.jakub[at]gmail.com
+
+## Źródła
+
+- https://code.visualstudio.com/docs/cpp/config-clang-mac

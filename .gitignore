@@ -9,6 +9,9 @@ Thumbs.db
 # Prerequisites
 *.d
 
+# CMake Build 
+/build
+
 # Compiled Object files
 *.slo
 *.lo
