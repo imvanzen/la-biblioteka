@@ -1,9 +1,15 @@
 #include <iostream>
 #include <string>
-#include "lib/Book.h"
 
-using namespace std;
+using std::cin;
+using std::cout;
+using std::endl;
 
+/**
+ * Main function
+ *
+ * @return int
+ */
 int main()
 {
   cout << "Jakub Reczko - Programowanie obiektowe - Projekt Zaliczeniowy" << endl;
