@@ -3,8 +3,11 @@ project(LaBiblioteka VERSION 0.1.0 LANGUAGES C CXX)
 add_library(Book
     Book.cpp
 )
+add_library(Library
+    Library.cpp
+)
 
-target_include_directories(Book
+target_include_directories(Library
     PUBLIC
     ${CMAKE_CURRENT_SOURCE_DIR}
 )

@@ -1,6 +1,7 @@
 #include <iostream>
 #include <string>
 #include "Book.h"
+#include "Library.h"
 
 using std::cin;
 using std::cout;
@@ -28,6 +29,16 @@ int main()
   cout << "Book 4: " << book4.getTitle() << endl;
   cout << "Book 5: " << book5.getTitle() << endl;
   cout << "Book 6: " << book6.getTitle() << endl;
+
+  Library library;
+  library.addBook(book1);
+  library.addBook(book2);
+  library.addBook(book3);
+  library.addBook(book4);
+  library.addBook(book5);
+  library.addBook(book6);
+
+  cout << "Library books: " << library.getBooks().size() << endl;
 
   return 0;
 }
