@@ -8,3 +8,5 @@ set(MAIN_SOURCES
 )
 
 add_executable(la-biblioteka ${MAIN_SOURCES}) 
+
+target_link_libraries(la-biblioteka PRIVATE Book)
