@@ -6,6 +6,9 @@ add_library(Book
 add_library(Library
     Library.cpp
 )
+add_library(Storage
+    Storage.cpp
+)
 
 target_include_directories(Library
     PUBLIC
