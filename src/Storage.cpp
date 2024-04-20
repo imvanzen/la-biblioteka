@@ -31,6 +31,11 @@ int Storage::writeData(const std::string &data)
   return 1;
 }
 
+/**
+ * Read data from file
+ *
+ * @return std::string
+ */
 std::string Storage::readData()
 {
   std::ifstream file(this->fileName);
