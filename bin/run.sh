@@ -2,7 +2,7 @@
 
 # Change directory to build directory
 echo "Running program..."
-cd build
+cd ./build
 
 # Run the program
 ./la-biblioteka
