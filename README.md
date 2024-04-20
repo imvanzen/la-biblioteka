@@ -19,27 +19,33 @@ Celem projektu jest stworzenie programu bibliotecznego, który umożliwi zarząd
 ## Technologie
 
 - Język programowania: C++
-- Baza danych: File System
-- Narzędzia: CMake
+- Baza danych: Dane zapisywane są do pliku
+- Narzędzia: CMake (Instalacja)[https://cmake.org/download/]
 
 ## Instalacja
 
 1. Sklonuj repozytorium:
 
 ```bash
-git clone https://github.com/imvanzen/la-biblioteka.git
+$ git clone https://github.com/imvanzen/la-biblioteka.git
 ```
 
 2. Przejdź do katalogu projektu:
 
 ```bash
-cd la-biblioteka
+$ cd la-biblioteka
 ```
 
-3. Uruchom aplikację:
+3. Uruchom skrypt kompilacji:
 
 ```bash
-cmake la-biblioteka
+$ sh ./bin/compile.sh
+```
+
+4. Uruchom program:
+
+```bash
+$ sh ./bin/run.sh
 ```
 
 ## Licencja
@@ -48,8 +54,11 @@ Ten projekt jest udostępniany na licencji MIT. Szczegóły można znaleźć w p
 
 ## Kontakt
 
-Jakub Reczko - @imvanzen
-Jeśli masz jakiekolwiek pytania lub sugestie, skontaktuj się z nami pod adresem: reczko.jakub[at]gmail.com
+Jakub Reczko
+
+Jeśli masz jakiekolwiek pytania lub sugestie, skontaktuj się z nami pod adresem:
+jakub.reczko[at]edu.wsti.com
+reczko.jakub[at]gmail.com
 
 ## Źródła
 
