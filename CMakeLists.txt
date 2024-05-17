@@ -11,4 +11,5 @@ add_executable(la-biblioteka ${MAIN_SOURCES})
 
 target_link_libraries(la-biblioteka PRIVATE Book)
 target_link_libraries(la-biblioteka PRIVATE Library)
+target_link_libraries(la-biblioteka PRIVATE Menu)
 target_link_libraries(la-biblioteka PRIVATE Storage)
