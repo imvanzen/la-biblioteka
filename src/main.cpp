@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include "utils.h"
 #include "Storage.h"
 #include "Book.h"
 #include "Library.h"
@@ -9,11 +10,6 @@ using std::cin;
 using std::cout;
 using std::endl;
 
-void blankAction(std::string name)
-{
-  cout << "Blank actio: " << name << endl;
-}
-
 /**
  * Main function
  *
@@ -21,7 +17,7 @@ void blankAction(std::string name)
  */
 int main()
 {
-  // Storage storage("./dbFile.db");
+  Storage storage("./dbFile.db");
 
   // cout << "Jakub Reczko - Programowanie obiektowe - Projekt Zaliczeniowy" << endl;
 

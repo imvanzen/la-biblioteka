@@ -1,5 +1,8 @@
 project(LaBiblioteka VERSION 0.1.0 LANGUAGES C CXX)
 
+add_library(utils
+    utils.cpp
+)
 add_library(Book
     Book.cpp
 )
