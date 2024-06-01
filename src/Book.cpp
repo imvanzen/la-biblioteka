@@ -101,7 +101,7 @@ void Book::setPages(int pages)
  *
  * @return std::string
  */
-std::string const Book::getTitle()
+std::string Book::getTitle() const
 {
   return this->title;
 };
@@ -111,7 +111,7 @@ std::string const Book::getTitle()
  *
  * @return std::string
  */
-std::string const Book::getAuthor()
+std::string Book::getAuthor() const
 {
   return this->author;
 };
@@ -121,7 +121,7 @@ std::string const Book::getAuthor()
  *
  * @return std::string
  */
-std::string const Book::getIsbn()
+std::string Book::getIsbn() const
 {
   return this->isbn;
 };
@@ -131,7 +131,7 @@ std::string const Book::getIsbn()
  *
  * @return int
  */
-int const Book::getYear()
+int Book::getYear() const
 {
   return this->year;
 };
@@ -141,7 +141,7 @@ int const Book::getYear()
  *
  * @return std::string
  */
-std::string const Book::getPublisher()
+std::string Book::getPublisher() const
 {
   return this->publisher;
 };
@@ -151,7 +151,7 @@ std::string const Book::getPublisher()
  *
  * @return int
  */
-int const Book::getPages()
+int Book::getPages() const
 {
   return this->pages;
 };

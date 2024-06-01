@@ -36,10 +36,10 @@ public:
   void setPublisher(std::string publisher);
   void setPages(int pages);
 
-  std::string const getTitle();
-  std::string const getAuthor();
-  std::string const getIsbn();
-  int const getYear();
-  std::string const getPublisher();
-  int const getPages();
+  std::string getTitle() const;
+  std::string getAuthor() const;
+  std::string getIsbn() const;
+  int getYear() const;
+  std::string getPublisher() const;
+  int getPages() const;
 };
