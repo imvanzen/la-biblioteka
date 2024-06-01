@@ -6,6 +6,9 @@ add_library(utils
 add_library(Book
     Book.cpp
 )
+add_library(User
+    User.cpp
+)
 add_library(Library
     Library.cpp
 )
