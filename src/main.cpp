@@ -17,8 +17,7 @@ using std::endl;
  */
 int main()
 {
-  Storage booksStorage("./dbFileBooks.db");
-  Storage userStorage("./dbFileUser.db");
+  Storage storage("./dbFile.db");
 
   cout << "Jakub Reczko - Programowanie obiektowe - Projekt Zaliczeniowy" << endl;
 
