@@ -70,8 +70,6 @@ void Menu::run()
     if (this->option != Q)
       this->invoke();
 
-    this->option = -1;
-
   } while (this->option != Q);
 
   std::cout << "Goodbye!" << std::endl;
