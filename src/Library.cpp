@@ -59,3 +59,41 @@ vector<User> Library::getUsers()
 {
   return this->users;
 };
+
+/**
+ * Remove book from library
+ *
+ * @param Book book
+ *
+ * @return void
+ */
+
+void Library::removeBook(const Book &book)
+{
+  for (int i = 0; i < this->books.size(); i++)
+  {
+    if (this->books[i].getTitle() == book.getTitle())
+    {
+      this->books.erase(this->books.begin() + i);
+    }
+  }
+};
+
+/**
+ * Remove user from library
+ *
+ * @param User user
+ *
+ * @return void
+ */
+
+void Library::removeUser(const User &user)
+{
+  for (int i = 0; i < this->users.size(); i++)
+  {
+    if (this->users[i].getName() == user.getName())
+    {
+      this->users.erase(this->users.begin() + i);
+    }
+  }
+};

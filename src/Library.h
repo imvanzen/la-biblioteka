@@ -25,4 +25,7 @@ public:
 
   vector<Book> getBooks();
   vector<User> getUsers();
+
+  void removeBook(const Book &book);
+  void removeUser(const User &user);
 };
