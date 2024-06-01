@@ -26,6 +26,7 @@ public:
 class Menu
 {
 private:
+  int option;
   std::string name;
   std::vector<MenuItem> items;
 
@@ -38,7 +39,7 @@ public:
 
   void list();
 
-  void invoke(int option);
+  void invoke();
 
   void run();
 };

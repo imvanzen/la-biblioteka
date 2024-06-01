@@ -44,16 +44,16 @@ void Menu::list()
   }
 };
 
-void Menu::invoke(int option)
+void Menu::invoke()
 {
-  this->items[option - 1].getAction(this->items[option - 1].getName());
+  this->items[this->option].getAction(this->items[this->option - 1].getName());
 };
 
 void Menu::run()
 {
-  int option;
   do
   {
+    this->option = -1;
     std::cout << this->name << std::endl;
 
     this->list();
@@ -62,13 +62,17 @@ void Menu::run()
 
     std::cout << "Selected option: ";
 
-    std::cin >> option;
+    std::cin >> this->option;
     std::cin.clear();             // Clear the error flags
     std::cin.ignore(10000, '\n'); // Ignore the newline character
 
-    std::cout << "Selected option: " << option << std::endl;
-    this->invoke(option);
-  } while (option != Q);
+    std::cout << "Selected option: " << this->option << std::endl;
+    if (this->option != Q)
+      this->invoke();
+
+    this->option = -1;
+
+  } while (this->option != Q);
 
   std::cout << "Goodbye!" << std::endl;
 };
