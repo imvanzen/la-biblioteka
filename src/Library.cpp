@@ -22,6 +22,19 @@ void Library::addBook(const Book &book)
 };
 
 /**
+ * Add user to library
+ *
+ * @param User user
+ *
+ * @return void
+ */
+
+void Library::addUser(const User &user)
+{
+  this->users.push_back(user);
+};
+
+/**
  * Get all books from library
  *
  * @param Book book
@@ -32,4 +45,17 @@ void Library::addBook(const Book &book)
 vector<Book> Library::getBooks()
 {
   return this->books;
+};
+
+/**
+ * Get all users from library
+ *
+ * @param User user
+ *
+ * @return vector<User>
+ */
+
+vector<User> Library::getUsers()
+{
+  return this->users;
 };

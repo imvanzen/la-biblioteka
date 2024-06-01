@@ -2,6 +2,7 @@
 
 #include <vector>
 #include "Book.h"
+#include "User.h"
 
 using std::vector;
 
@@ -14,9 +15,14 @@ class Library
 {
 private:
   vector<Book> books;
+  vector<User> users;
 
 public:
   Library();
+
   void addBook(const Book &book);
+  void addUser(const User &user);
+
   vector<Book> getBooks();
+  vector<User> getUsers();
 };
