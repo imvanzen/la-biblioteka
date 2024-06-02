@@ -33,7 +33,37 @@ void findBook(Library &library)
   {
     cout << "Nie znaleziono książki" << endl;
   }
-  cin.get();
+}
+
+/**
+ * Add book to library
+ *
+ */
+void addBook(Library &library)
+{
+  string title;
+  string author;
+  string isbn;
+  int year;
+  string publisher;
+  int pages;
+
+  cout << "Dodaj książkę" << endl;
+  cout << "Podaj tytuł książki: ";
+  cin >> title;
+  cout << "Podaj autora książki: ";
+  cin >> author;
+  cout << "Podaj ISBN książki: ";
+  cin >> isbn;
+  cout << "Podaj rok wydania książki: ";
+  cin >> year;
+  cout << "Podaj wydawcę książki: ";
+  cin >> publisher;
+  cout << "Podaj ilość stron książki: ";
+  cin >> pages;
+
+  Book book(title, author, isbn, year, publisher, pages);
+  library.addBook(book);
 }
 
 /**
@@ -114,7 +144,7 @@ int main()
       findBook(library);
       break;
     case '2':
-
+      addBook(library);
       break;
     case '3':
 
@@ -143,6 +173,10 @@ int main()
     case Q:
       break;
     }
+
+    cout << "Naciśnij dowolny klawisz aby kontynuować...";
+    getchar();
+
   } while (option != Q);
 
   cout << "Do widzenia!" << endl;
