@@ -170,15 +170,15 @@ void addBook(Library &library)
 
   cout << "Dodaj książkę" << endl;
   cout << "Podaj tytuł książki: ";
-  cin >> title;
+  getline(cin, title);
   cout << "Podaj autora książki: ";
-  cin >> author;
+  getline(cin, author);
   cout << "Podaj ISBN książki: ";
-  cin >> isbn;
+  getline(cin, isbn);
   cout << "Podaj rok wydania książki: ";
   cin >> year;
   cout << "Podaj wydawcę książki: ";
-  cin >> publisher;
+  getline(cin, publisher);
   cout << "Podaj ilość stron książki: ";
   cin >> pages;
 
@@ -195,7 +195,7 @@ void editBook(Library &library)
   string title;
   cout << "Edytuj książkę" << endl;
   cout << "Podaj tytuł książki: ";
-  cin >> title;
+  getline(cin, title);
   Book *foundBook = library.findBook(title);
 
   if (foundBook != nullptr)
@@ -286,7 +286,7 @@ void removeBook(Library &library)
   string title;
   cout << "Usuń książkę" << endl;
   cout << "Podaj tytuł książki: ";
-  cin >> title;
+  getline(cin, title);
   Book *foundBook = library.findBook(title);
   if (foundBook != nullptr)
   {
@@ -309,7 +309,7 @@ void findUser(Library &library)
   string name;
   cout << "Znajdź czytelnika" << endl;
   cout << "Podaj imię i nazwisko czytelnika: ";
-  cin >> name;
+  getline(cin, name);
   User *foundUser = library.findUser(name);
   if (foundUser != nullptr)
   {
