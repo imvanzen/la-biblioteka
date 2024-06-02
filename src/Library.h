@@ -20,6 +20,8 @@ private:
 public:
   Library();
 
+  Book *findBook(const string &title);
+
   void addBook(const Book &book);
   void addUser(const User &user);
 

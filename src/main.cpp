@@ -15,6 +15,28 @@ using std::string;
 #define Q 'q'
 
 /**
+ * Find book in library
+ *
+ */
+void findBook(Library &library)
+{
+  string title;
+  cout << "Znajdź książkę" << endl;
+  cout << "Podaj tytuł książki: ";
+  cin >> title;
+  Book *foundBook = library.findBook(title);
+  if (foundBook != nullptr)
+  {
+    cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
+  }
+  else
+  {
+    cout << "Nie znaleziono książki" << endl;
+  }
+  cin.get();
+}
+
+/**
  * Main function
  *
  * @return int
@@ -38,7 +60,6 @@ int main()
   User user4("Kasia Nowak", "kasia.nowak@mail.com", "ul. Nowak 2", "987654321");
 
   Library library;
-
   library.addBook(book1);
   library.addBook(book2);
   library.addBook(book3);
@@ -51,32 +72,17 @@ int main()
   library.addUser(user3);
   library.addUser(user4);
 
-  cout << "Library books: " << library.getBooks().size() << endl;
-
-  for (int i = 0; i < library.getBooks().size(); i++)
-  {
-    cout << library.getBooks()[i].getTitle() << endl;
-  }
-
-  cout << "Library users: " << library.getUsers().size() << endl;
-
-  for (int i = 0; i < library.getUsers().size(); i++)
-  {
-    cout << library.getUsers()[i].getName() << endl;
-  }
-
-  storage.writeData("Hello World");
-  std::string r = storage.readData();
-
-  cout << r << endl;
-
   cout << "La Biblioteca - Menu Głowne" << endl;
 
   char option;
   do
   {
+    clearScreen();
     option = -1;
 
+    /**
+     * Menu
+     */
     cout << "1. Znajdź książkę" << endl;
     cout << "2. Dodaj książkę" << endl;
     cout << "3. Edytuj książkę" << endl;
@@ -87,19 +93,56 @@ int main()
     cout << "7. Edytuj czytelnika" << endl;
     cout << "8. Usuń czytelnika" << endl;
     cout << endl;
-    // cout << "9. Wypożycz książkę" << endl;
-    // cout << "10. Oddaj książkę" << endl;
-
+    cout << "r. Zapis do pliku" << endl;
+    cout << "w. Odczyt z pliku" << endl;
     cout << Q << ". Wyjście" << endl;
 
+    /**
+     * Get the option
+     */
     cout << "Wybierz opcje: ";
-
     cin >> option;
     cin.clear();             // Clear the error flags
     cin.ignore(10000, '\n'); // Ignore the newline character
 
-    cout << "Selected option: " << option << endl;
+    /**
+     * Switch statement
+     */
+    switch (option)
+    {
+    case '1':
+      findBook(library);
+      break;
+    case '2':
 
+      break;
+    case '3':
+
+      break;
+    case '4':
+
+      break;
+    case '5':
+
+      break;
+    case '6':
+
+      break;
+    case '7':
+
+      break;
+    case '8':
+
+      break;
+    case 'r':
+
+      break;
+    case 'w':
+
+      break;
+    case Q:
+      break;
+    }
   } while (option != Q);
 
   cout << "Do widzenia!" << endl;

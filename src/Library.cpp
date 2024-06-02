@@ -1,5 +1,8 @@
 #include <iostream>
+#include <string>
 #include "Library.h"
+
+using std::string;
 
 /**
  * Library class
@@ -7,6 +10,26 @@
  * @return void
  */
 Library::Library(){};
+
+/**
+ * Find book in library
+ *
+ * @param Book book
+ *
+ * @return Book | nullptr
+ */
+Book *Library::findBook(const string &title)
+{
+  for (int i = 0; i < this->books.size(); i++)
+  {
+    if (this->books[i].getTitle() == title)
+    {
+      return &this->books[i];
+    }
+  }
+
+  return nullptr;
+};
 
 /**
  * Add book to library
