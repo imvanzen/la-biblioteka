@@ -29,6 +29,26 @@ Book *Library::findBook(const string &title)
 };
 
 /**
+ * Find user in library
+ *
+ * @param User user
+ *
+ * @return User | nullptr
+ */
+User *Library::findUser(const string &name)
+{
+  for (int i = 0; i < this->users.size(); i++)
+  {
+    if (this->users[i].getName() == name)
+    {
+      return &this->users[i];
+    }
+  }
+
+  return nullptr;
+};
+
+/**
  * Add book to library
  *
  * @param Book book

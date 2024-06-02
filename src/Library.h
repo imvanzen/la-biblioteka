@@ -23,6 +23,7 @@ public:
   Library();
 
   Book *findBook(const string &title);
+  User *findUser(const string &name);
 
   void addBook(const Book &book);
   void addUser(const User &user);
