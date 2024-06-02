@@ -4,11 +4,15 @@
 #include "Storage.h"
 #include "Book.h"
 #include "Library.h"
+#include "Views.h"
 #include "Menu.h"
 
 using std::cin;
 using std::cout;
 using std::endl;
+using std::string;
+
+#define Q 'q'
 
 /**
  * Main function
@@ -17,7 +21,7 @@ using std::endl;
  */
 int main()
 {
-  Storage storage("./dbFile.db");
+  Storage storage("./dbFile.dat");
 
   cout << "Jakub Reczko - Programowanie obiektowe - Projekt Zaliczeniowy" << endl;
 
@@ -48,26 +52,57 @@ int main()
   library.addUser(user4);
 
   cout << "Library books: " << library.getBooks().size() << endl;
+
+  for (int i = 0; i < library.getBooks().size(); i++)
+  {
+    cout << library.getBooks()[i].getTitle() << endl;
+  }
+
   cout << "Library users: " << library.getUsers().size() << endl;
 
-  Menu menu = Menu("La Biblioteca - Menu Głowne");
+  for (int i = 0; i < library.getUsers().size(); i++)
+  {
+    cout << library.getUsers()[i].getName() << endl;
+  }
 
-  menu.addItem(MenuItem("Znajdź książkę", &blankAction));
-  menu.addItem(MenuItem("Dodaj książkę", &blankAction));
-  menu.addItem(MenuItem("Edytuj książkę", &blankAction));
-  menu.addItem(MenuItem("Usuń książkę", &blankAction));
+  storage.writeData("Hello World");
+  std::string r = storage.readData();
 
-  menu.addItem(MenuItem("Znajdź czytelnika", &blankAction));
-  menu.addItem(MenuItem("Dodaj czytelnika", &blankAction));
-  menu.addItem(MenuItem("Edytuj czytelnika", &blankAction));
-  menu.addItem(MenuItem("Usuń czytelnika", &blankAction));
+  cout << r << endl;
 
-  menu.addItem(MenuItem("Wypożycz książkę", &blankAction));
-  menu.addItem(MenuItem("Oddaj książkę", &blankAction));
+  cout << "La Biblioteca - Menu Głowne" << endl;
 
-  menu.addItem(MenuItem("Wyświetl książki wypożyczone przez czytelnika", &blankAction));
+  char option;
+  do
+  {
+    option = -1;
 
-  menu.run();
+    cout << "1. Znajdź książkę" << endl;
+    cout << "2. Dodaj książkę" << endl;
+    cout << "3. Edytuj książkę" << endl;
+    cout << "4. Usuń książkę" << endl;
+    cout << endl;
+    cout << "5. Znajdź czytelnika" << endl;
+    cout << "6. Dodaj czytelnika" << endl;
+    cout << "7. Edytuj czytelnika" << endl;
+    cout << "8. Usuń czytelnika" << endl;
+    cout << endl;
+    // cout << "9. Wypożycz książkę" << endl;
+    // cout << "10. Oddaj książkę" << endl;
+
+    cout << Q << ". Wyjście" << endl;
+
+    cout << "Wybierz opcje: ";
+
+    cin >> option;
+    cin.clear();             // Clear the error flags
+    cin.ignore(10000, '\n'); // Ignore the newline character
+
+    cout << "Selected option: " << option << endl;
+
+  } while (option != Q);
+
+  cout << "Do widzenia!" << endl;
 
   return 0;
 }

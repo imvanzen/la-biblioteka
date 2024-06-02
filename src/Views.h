@@ -1,9 +1,17 @@
 #include <iostream>
 
-class UserViews
-{
-};
+void findUser();
 
-class BookViews
-{
-};
+void addUser();
+
+void editUser();
+
+void removeUser();
+
+void findBook();
+
+void addBook();
+
+void editBook();
+
+void removeBook();

@@ -15,12 +15,6 @@ add_library(Library
 add_library(Storage
     Storage.cpp
 )
-add_library(Views
-    Views.cpp
-)
-add_library(Menu
-    Menu.cpp
-)
 
 target_include_directories(Library
     PUBLIC
