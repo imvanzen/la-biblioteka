@@ -202,6 +202,8 @@ void addBook(Library &library)
 
   Book book(title, author, isbn, year, publisher, pages);
   library.addBook(book);
+
+  cout << "Dodano książkę" << endl;
 }
 
 /**
@@ -340,7 +342,6 @@ void findUser(Library &library)
     cout << "Nie znaleziono czytelnika" << endl;
     return;
   }
-
   cout << "Znaleziono czytelnika: " << foundUser->getName() << endl;
   cout << "Email: " << foundUser->getEmail() << endl;
   cout << "Adres: " << foundUser->getAddress() << endl;
@@ -373,6 +374,8 @@ void addUser(Library &library)
 
   User user(name, email, address, phone);
   library.addUser(user);
+
+  cout << "Dodano czytelnika" << endl;
 }
 
 /**
@@ -407,13 +410,11 @@ void editUser(Library &library)
     cout << "b. Powrót" << endl;
 
     cout << "Wybierz opcje: ";
+    fflush(stdin);
     cin >> option;
-    cin.clear();             // Clear the error flags
-    cin.ignore(10000, '\n'); // Ignore the newline character
 
     string newValueTekst = "";
     int newValueNumber = 0;
-    fflush(stdin);
 
     switch (option)
     {
