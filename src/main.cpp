@@ -390,8 +390,8 @@ void editUser(Library &library)
   if (foundUser == nullptr)
   {
     cout << "Nie znaleziono czytelnika" << endl;
-    return
-  };
+    return;
+  }
 
   cout << "Znaleziono czytelnika: " << foundUser->getName() << endl;
 
