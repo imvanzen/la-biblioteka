@@ -1,8 +1,5 @@
 #include <iostream>
-#include <string>
 #include "Library.h"
-
-using std::string;
 
 /**
  * Library class
@@ -22,7 +19,7 @@ Book *Library::findBook(const string &title)
 {
   for (int i = 0; i < this->books.size(); i++)
   {
-    if (this->books[i].getTitle() == title)
+    if (this->books[i].getTitle().find(title) != string::npos)
     {
       return &this->books[i];
     }
