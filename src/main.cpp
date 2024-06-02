@@ -236,13 +236,11 @@ void editBook(Library &library)
     cout << "b. Powrót" << endl;
 
     cout << "Wybierz opcje: ";
+    fflush(stdin);
     cin >> option;
-    cin.clear();             // Clear the error flags
-    cin.ignore(10000, '\n'); // Ignore the newline character
 
     string newValueTekst = "";
     int newValueNumer = 0;
-    fflush(stdin);
 
     switch (option)
     {
