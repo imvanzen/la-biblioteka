@@ -4,7 +4,6 @@
 #include "Storage.h"
 #include "Book.h"
 #include "Library.h"
-#include "Views.h"
 #include "Menu.h"
 
 using std::cin;
@@ -63,6 +62,8 @@ int main()
   char option;
   do
   {
+    clearScreen();
+
     /**
      * Menu
      */
@@ -84,6 +85,7 @@ int main()
      * Get the option
      */
     cout << "Wybierz opcje: ";
+    fflush(stdin);
     option = getchar();
     cin.clear();             // Clear the error flags
     cin.ignore(10000, '\n'); // Ignore the newline character
@@ -145,7 +147,7 @@ void findBook(Library &library)
   string title;
   cout << "Znajdź książkę" << endl;
   cout << "Podaj tytuł książki: ";
-  cin >> title;
+  getline(cin, title);
   Book *foundBook = library.findBook(title);
   if (foundBook != nullptr)
   {
@@ -172,16 +174,22 @@ void addBook(Library &library)
 
   cout << "Dodaj książkę" << endl;
   cout << "Podaj tytuł książki: ";
+  fflush(stdin);
   getline(cin, title);
   cout << "Podaj autora książki: ";
+  fflush(stdin);
   getline(cin, author);
   cout << "Podaj ISBN książki: ";
+  fflush(stdin);
   getline(cin, isbn);
   cout << "Podaj rok wydania książki: ";
+  fflush(stdin);
   cin >> year;
   cout << "Podaj wydawcę książki: ";
+  fflush(stdin);
   getline(cin, publisher);
   cout << "Podaj ilość stron książki: ";
+  fflush(stdin);
   cin >> pages;
 
   Book book(title, author, isbn, year, publisher, pages);
@@ -230,36 +238,42 @@ void editBook(Library &library)
       {
       case '1':
         cout << "Podaj nowy tytuł książki: ";
+        fflush(stdin);
         getline(cin, newValueTekst);
         foundBook->setTitle(newValueTekst);
         cout << "Zmieniono tytuł książki na: " << foundBook->getTitle() << endl;
         break;
       case '2':
         cout << "Podaj nowego autora książki: ";
+        fflush(stdin);
         getline(cin, newValueTekst);
         foundBook->setAuthor(newValueTekst);
         cout << "Zmieniono autora książki na: " << foundBook->getAuthor() << endl;
         break;
       case '3':
         cout << "Podaj nowy ISBN książki: ";
+        fflush(stdin);
         getline(cin, newValueTekst);
         foundBook->setIsbn(newValueTekst);
         cout << "Zmieniono ISBN książki na: " << foundBook->getIsbn() << endl;
         break;
       case '4':
         cout << "Podaj nowy rok wydania książki: ";
+        fflush(stdin);
         cin >> newValueNumer;
         foundBook->setYear(newValueNumer);
         cout << "Zmieniono rok wydania książki na: " << foundBook->getYear() << endl;
         break;
       case '5':
         cout << "Podaj nowego wydawcę książki: ";
+        fflush(stdin);
         getline(cin, newValueTekst);
         foundBook->setPublisher(newValueTekst);
         cout << "Zmieniono wydawcę książki na: " << foundBook->getPublisher() << endl;
         break;
       case '6':
         cout << "Podaj nową ilość stron książki: ";
+        fflush(stdin);
         cin >> newValueNumer;
         foundBook->setPages(newValueNumer);
         cout << "Zmieniono ilość stron książki na: " << foundBook->getPages() << endl;
