@@ -15,3 +15,13 @@ void clearScreen()
   system("clear");
 #endif
 }
+
+/**
+ * Pauza w programie do czasu naciśnięcia klawisza
+ */
+void pause()
+{
+  std::cout << "Naciśnij klawisz aby kontynuować..." << std::endl;
+  std::cin.ignore();
+  std::cin.get();
+}
