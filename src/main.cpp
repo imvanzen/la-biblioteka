@@ -158,6 +158,29 @@ void editBook(Library &library)
 }
 
 /**
+ * Remove book from library
+ *
+ */
+void removeBook(Library &library)
+{
+  string title;
+  cout << "Usuń książkę" << endl;
+  cout << "Podaj tytuł książki: ";
+  cin >> title;
+  Book *foundBook = library.findBook(title);
+  if (foundBook != nullptr)
+  {
+    cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
+    library.removeBook(*foundBook);
+    cout << "Usunięto książkę" << endl;
+  }
+  else
+  {
+    cout << "Nie znaleziono książki" << endl;
+  }
+}
+
+/**
  * Main function
  *
  * @return int
