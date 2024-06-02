@@ -67,6 +67,97 @@ void addBook(Library &library)
 }
 
 /**
+ * Edit book in library
+ *
+ */
+void editBook(Library &library)
+{
+  string title;
+  cout << "Edytuj książkę" << endl;
+  cout << "Podaj tytuł książki: ";
+  cin >> title;
+  Book *foundBook = library.findBook(title);
+
+  if (foundBook != nullptr)
+  {
+    cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
+
+    char option;
+
+    do
+    {
+      cout << "Co chcesz edytować?" << endl;
+      cout << "1. Tytuł" << endl;
+      cout << "2. Autor" << endl;
+      cout << "3. ISBN" << endl;
+      cout << "4. Rok wydania" << endl;
+      cout << "5. Wydawca" << endl;
+      cout << "6. Ilość stron" << endl;
+      cout << "b. Powrót" << endl;
+
+      cout << "Wybierz opcje: ";
+      cin >> option;
+      cin.clear();             // Clear the error flags
+      cin.ignore(10000, '\n'); // Ignore the newline character
+
+      string newValueTekst = "";
+      int newValueNumer = 0;
+      fflush(stdin);
+
+      switch (option)
+      {
+      case '1':
+        cout << "Podaj nowy tytuł książki: ";
+        getline(cin, newValueTekst);
+        foundBook->setTitle(newValueTekst);
+        cout << "Zmieniono tytuł książki na: " << foundBook->getTitle() << endl;
+        break;
+      case '2':
+        cout << "Podaj nowego autora książki: ";
+        getline(cin, newValueTekst);
+        foundBook->setAuthor(newValueTekst);
+        cout << "Zmieniono autora książki na: " << foundBook->getAuthor() << endl;
+        break;
+      case '3':
+        cout << "Podaj nowy ISBN książki: ";
+        getline(cin, newValueTekst);
+        foundBook->setIsbn(newValueTekst);
+        cout << "Zmieniono ISBN książki na: " << foundBook->getIsbn() << endl;
+        break;
+      case '4':
+        cout << "Podaj nowy rok wydania książki: ";
+        cin >> newValueNumer;
+        foundBook->setYear(newValueNumer);
+        cout << "Zmieniono rok wydania książki na: " << foundBook->getYear() << endl;
+        break;
+      case '5':
+        cout << "Podaj nowego wydawcę książki: ";
+        getline(cin, newValueTekst);
+        foundBook->setPublisher(newValueTekst);
+        cout << "Zmieniono wydawcę książki na: " << foundBook->getPublisher() << endl;
+        break;
+      case '6':
+        cout << "Podaj nową ilość stron książki: ";
+        cin >> newValueNumer;
+        foundBook->setPages(newValueNumer);
+        cout << "Zmieniono ilość stron książki na: " << foundBook->getPages() << endl;
+        break;
+      case 'b':
+        break;
+      default:
+        cout << "Nieprawidłowa opcja" << endl;
+        break;
+      }
+
+    } while (option != 'b');
+  }
+  else
+  {
+    cout << "Nie znaleziono książki" << endl;
+  }
+}
+
+/**
  * Main function
  *
  * @return int
@@ -74,8 +165,6 @@ void addBook(Library &library)
 int main()
 {
   Storage storage("./dbFile.dat");
-
-  cout << "Jakub Reczko - Programowanie obiektowe - Projekt Zaliczeniowy" << endl;
 
   Book book1("Pan Tadeusz", "Adam Mickiewicz", "978-83-288-2376-0", 1834, "Czytelnik", 328);
   Book book2("Dziady", "Adam Mickiewicz", "978-83-288-2376-0", 1834, "Czytelnik", 328);
@@ -102,14 +191,14 @@ int main()
   library.addUser(user3);
   library.addUser(user4);
 
+  clearScreen();
+
+  cout << "Jakub Reczko - Programowanie obiektowe - Projekt Zaliczeniowy" << endl;
   cout << "La Biblioteca - Menu Głowne" << endl;
 
   char option;
   do
   {
-    clearScreen();
-    option = -1;
-
     /**
      * Menu
      */
@@ -131,9 +220,7 @@ int main()
      * Get the option
      */
     cout << "Wybierz opcje: ";
-    cin >> option;
-    cin.clear();             // Clear the error flags
-    cin.ignore(10000, '\n'); // Ignore the newline character
+    option = getchar();
 
     /**
      * Switch statement
@@ -147,7 +234,7 @@ int main()
       addBook(library);
       break;
     case '3':
-
+      editBook(library);
       break;
     case '4':
 
@@ -174,8 +261,7 @@ int main()
       break;
     }
 
-    cout << "Naciśnij dowolny klawisz aby kontynuować...";
-    getchar();
+    pause();
 
   } while (option != Q);
 
