@@ -1,9 +1,11 @@
 #pragma once
 
 #include <vector>
+#include <string>
 #include "Book.h"
 #include "User.h"
 
+using std::string;
 using std::vector;
 
 /**
