@@ -85,6 +85,8 @@ int main()
      */
     cout << "Wybierz opcje: ";
     option = getchar();
+    cin.clear();             // Clear the error flags
+    cin.ignore(10000, '\n'); // Ignore the newline character
 
     /**
      * Switch statement
