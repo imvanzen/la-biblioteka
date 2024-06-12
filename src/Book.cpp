@@ -155,3 +155,39 @@ int Book::getPages() const
 {
   return this->pages;
 };
+
+/**
+ * Serialize book
+ *
+ * @param std::ostream &os
+ *
+ * @return void
+ */
+void Book::serialize(std::ostream &os) const
+{
+  os << title << "\n"
+     << author << "\n"
+     << isbn << "\n"
+     << year << "\n"
+     << publisher << "\n"
+     << pages << "\n";
+}
+
+/**
+ * Deserialize book
+ *
+ * @param std::istream &is
+ *
+ * @return void
+ */
+void Book::deserialize(std::istream &is)
+{
+  std::getline(is, title);
+  std::getline(is, author);
+  std::getline(is, isbn);
+  is >> year;
+  is.ignore(); // Ignorujemy znak nowej linii po liczbie
+  std::getline(is, publisher);
+  is >> pages;
+  is.ignore(); // Ignorujemy znak nowej linii po liczbie
+}

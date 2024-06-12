@@ -29,6 +29,9 @@ public:
       std::string publisher,
       int pages);
 
+  void serialize(std::ostream &os) const;
+  void deserialize(std::istream &is);
+
   void setTitle(std::string title);
   void setAuthor(std::string author);
   void setIsbn(std::string isbn);
