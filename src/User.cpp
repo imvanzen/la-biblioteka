@@ -5,47 +5,102 @@
 #include <string>
 #include "User.h"
 
-User::User(const std::string &name, const std::string &email, const std::string &address, const std::string &phoneNumber)
+/**
+ * User constructor
+ *
+ * @param std::string name
+ * @param std::string email
+ * @param std::string address
+ * @param std::string phoneNumber
+ *
+ */
+User::User(const std::string name, const std::string email, const std::string address, const std::string phoneNumber)
     : name(name), email(email), address(address), phoneNumber(phoneNumber) {}
 
-// Getters
+/**
+ * Get name
+ *
+ * @return std::string
+ */
 std::string User::getName() const
 {
   return name;
 }
 
+/**
+ * Get email
+ *
+ * @return std::string
+ */
 std::string User::getEmail() const
 {
   return email;
 }
 
+/**
+ * Get address
+ *
+ * @return std::string
+ */
 std::string User::getAddress() const
 {
   return address;
 }
 
+/**
+ * Get phone number
+ *
+ * @return std::string
+ */
 std::string User::getPhoneNumber() const
 {
   return phoneNumber;
 }
 
-// Setters
-void User::setName(const std::string &newName)
+/**
+ * Set name
+ *
+ * @param std::string newName
+ *
+ * @return void
+ */
+void User::setName(const std::string newName)
 {
-  name = newName;
+  this->name = newName;
 }
 
-void User::setEmail(const std::string &newEmail)
+/**
+ * Set email
+ *
+ * @param std::string newEmail
+ *
+ * @return void
+ */
+void User::setEmail(const std::string newEmail)
 {
-  email = newEmail;
+  this->email = newEmail;
 }
 
-void User::setAddress(const std::string &newAddress)
+/**
+ * Set address
+ *
+ * @param std::string newAddress
+ *
+ * @return void
+ */
+void User::setAddress(const std::string newAddress)
 {
-  address = newAddress;
+  this->address = newAddress;
 }
 
-void User::setPhoneNumber(const std::string &newPhoneNumber)
+/**
+ * Set phone number
+ *
+ * @param std::string newPhoneNumber
+ *
+ * @return void
+ */
+void User::setPhoneNumber(const std::string newPhoneNumber)
 {
-  phoneNumber = newPhoneNumber;
+  this->phoneNumber = newPhoneNumber;
 };
