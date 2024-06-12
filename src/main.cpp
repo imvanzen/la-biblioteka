@@ -114,13 +114,13 @@ int main()
       findUser(library);
       break;
     case '6':
-
+      addUser(library);
       break;
     case '7':
-
+      editUser(library);
       break;
     case '8':
-
+      removeUser(library);
       break;
     case 'r':
 
