@@ -14,6 +14,9 @@ public:
   // Constructor
   User(const std::string name, const std::string email, const std::string address, const std::string phoneNumber);
 
+  void serialize(std::ostream &os) const;
+  void deserialize(std::istream &is);
+
   // Getters
   std::string getName() const;
   std::string getEmail() const;

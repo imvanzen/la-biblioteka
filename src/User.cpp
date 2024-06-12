@@ -104,3 +104,33 @@ void User::setPhoneNumber(const std::string newPhoneNumber)
 {
   this->phoneNumber = newPhoneNumber;
 };
+
+/**
+ * Serialize user
+ *
+ * @param std::ostream &os
+ *
+ * @return void
+ */
+void User::serialize(std::ostream &os) const
+{
+  os << this->name << "\n"
+     << this->email << "\n"
+     << this->address << "\n"
+     << this->phoneNumber << "\n";
+}
+
+/**
+ * Deserialize user
+ *
+ * @param std::istream &is
+ *
+ * @return void
+ */
+void User::deserialize(std::istream &is)
+{
+  std::getline(is, this->name);
+  std::getline(is, this->email);
+  std::getline(is, this->address);
+  std::getline(is, this->phoneNumber);
+}
