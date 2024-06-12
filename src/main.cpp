@@ -13,11 +13,13 @@ using std::string;
 
 #define Q 'q'
 
+void listBooks(Library &library);
 void findBook(Library &library);
 void addBook(Library &library);
 void editBook(Library &library);
 void removeBook(Library &library);
 
+void listUsers(Library &library);
 void findUser(Library &library);
 void addUser(Library &library);
 void editUser(Library &library);
@@ -70,15 +72,17 @@ int main()
     /**
      * Menu
      */
-    cout << "1. Znajdź książkę" << endl;
-    cout << "2. Dodaj książkę" << endl;
-    cout << "3. Edytuj książkę" << endl;
-    cout << "4. Usuń książkę" << endl;
+    cout << "1. Wyswietl książki" << endl;
+    cout << "2. Znajdź książkę" << endl;
+    cout << "3. Dodaj książkę" << endl;
+    cout << "4. Edytuj książkę" << endl;
+    cout << "5. Usuń książkę" << endl;
     cout << endl;
-    cout << "5. Znajdź czytelnika" << endl;
-    cout << "6. Dodaj czytelnika" << endl;
-    cout << "7. Edytuj czytelnika" << endl;
-    cout << "8. Usuń czytelnika" << endl;
+    cout << "6. Wyświetl czytelnikow" << endl;
+    cout << "7. Znajdź czytelnika" << endl;
+    cout << "8. Dodaj czytelnika" << endl;
+    cout << "9. Edytuj czytelnika" << endl;
+    cout << "0. Usuń czytelnika" << endl;
     cout << endl;
     cout << "r. Zapis do pliku" << endl;
     cout << "w. Odczyt z pliku" << endl;
@@ -99,27 +103,33 @@ int main()
     switch (option)
     {
     case '1':
-      findBook(library);
+      listBooks(library);
       break;
     case '2':
-      addBook(library);
+      findBook(library);
       break;
     case '3':
-      editBook(library);
+      addBook(library);
       break;
     case '4':
-      removeBook(library);
+      editBook(library);
       break;
     case '5':
-      findUser(library);
+      removeBook(library);
       break;
     case '6':
-      addUser(library);
+      listUsers(library);
       break;
     case '7':
-      editUser(library);
+      findUser(library);
       break;
     case '8':
+      addUser(library);
+      break;
+    case '9':
+      editUser(library);
+      break;
+    case '0':
       removeUser(library);
       break;
     case 'r':
@@ -139,6 +149,20 @@ int main()
   cout << "Do widzenia!" << endl;
 
   return 0;
+}
+
+/**
+ * List books
+ *
+ */
+void listBooks(Library &library)
+{
+  cout << "Lista książek" << endl;
+  vector<Book> books = library.getBooks();
+  for (int i = 0; i < books.size(); i++)
+  {
+    cout << i + 1 << ". " << books[i].getTitle() << " - " << books[i].getAuthor() << " (" << books[i].getYear() << ")" << endl;
+  }
 }
 
 /**
@@ -323,6 +347,20 @@ void removeBook(Library &library)
     return;
   library.removeBook(*foundBook);
   cout << "Usunięto książkę" << endl;
+}
+
+/**
+ * List users
+ *
+ */
+void listUsers(Library &library)
+{
+  cout << "Lista czytelników" << endl;
+  vector<User> users = library.getUsers();
+  for (int i = 0; i < users.size(); i++)
+  {
+    cout << i + 1 << ". " << users[i].getName() << " - " << users[i].getEmail() << " (" << users[i].getPhoneNumber() << ")" << endl;
+  }
 }
 
 /**
