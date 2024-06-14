@@ -137,3 +137,91 @@ void Library::removeUser(const User &user)
     }
   }
 };
+
+/**
+ * Serialize library
+ *
+ * @param ostream os
+ *
+ * @return void
+ */
+
+void Library::serialize(std::ostream &os) const
+{
+  os << this->books.size() << std::endl;
+  for (int i = 0; i < this->books.size(); i++)
+  {
+    os << this->books[i].getTitle() << std::endl;
+    os << this->books[i].getAuthor() << std::endl;
+    os << this->books[i].getIsbn() << std::endl;
+    os << this->books[i].getYear() << std::endl;
+    os << this->books[i].getPublisher() << std::endl;
+    os << this->books[i].getPages() << std::endl;
+  }
+
+  os << this->users.size() << std::endl;
+  for (int i = 0; i < this->users.size(); i++)
+  {
+    os << this->users[i].getName() << std::endl;
+    os << this->users[i].getEmail() << std::endl;
+    os << this->users[i].getAddress() << std::endl;
+    os << this->users[i].getPhoneNumber() << std::endl;
+  }
+};
+
+/**
+ * Deserialize library
+ *
+ * @param istream is
+ *
+ * @return void
+ */
+
+void Library::deserialize(std::istream &is)
+{
+  int booksSize;
+  is >> booksSize;
+  is.ignore();
+
+  for (int i = 0; i < booksSize; i++)
+  {
+    string title;
+    string author;
+    string isbn;
+    int year;
+    string publisher;
+    int pages;
+
+    std::getline(is, title);
+    std::getline(is, author);
+    std::getline(is, isbn);
+    is >> year;
+    is.ignore();
+    std::getline(is, publisher);
+    is >> pages;
+    is.ignore();
+
+    Book book(title, author, isbn, year, publisher, pages);
+    this->books.push_back(book);
+  }
+
+  int usersSize;
+  is >> usersSize;
+  is.ignore();
+
+  for (int i = 0; i < usersSize; i++)
+  {
+    string name;
+    string email;
+    string address;
+    string phoneNumber;
+
+    std::getline(is, name);
+    std::getline(is, email);
+    std::getline(is, address);
+    std::getline(is, phoneNumber);
+
+    User user(name, email, address, phoneNumber);
+    this->users.push_back(user);
+  }
+};

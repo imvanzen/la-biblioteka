@@ -1,6 +1,7 @@
 #pragma once
 
 #include <vector>
+#include <fstream>
 #include <string>
 #include "Book.h"
 #include "User.h"
@@ -33,4 +34,7 @@ public:
 
   void removeBook(const Book &book);
   void removeUser(const User &user);
+
+  void serialize(std::ostream &os) const;
+  void deserialize(std::istream &is);
 };

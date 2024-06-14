@@ -1,5 +1,6 @@
 #include <iostream>
 #include <string>
+#include <fstream>
 #include "utils.h"
 #include "Storage.h"
 #include "Book.h"
@@ -25,6 +26,9 @@ void addUser(Library &library);
 void editUser(Library &library);
 void removeUser(Library &library);
 
+void saveToFile(Library &library, Storage &storage);
+void loadFromFile(Library &library, Storage &storage);
+
 /**
  * Main function
  *
@@ -34,30 +38,8 @@ int main()
 {
   Storage storage("./dbFile.dat");
 
-  Book book1("Pan Tadeusz", "Adam Mickiewicz", "978-83-288-2376-0", 1834, "Czytelnik", 328);
-  Book book2("Dziady", "Adam Mickiewicz", "978-83-288-2376-0", 1834, "Czytelnik", 328);
-  Book book3("W pustyni i w puszczy", "Henryk Sienkiewicz", "978-83-288-2376-0", 1911, "Czytelnik", 328);
-  Book book4("Krzyżacy", "Henryk Sienkiewicz", "978-83-288-2376-0", 1900, "Czytelnik", 328);
-  Book book5("Ogniem i mieczem", "Henryk Sienkiewicz", "978-83-288-2376-0", 1884, "Czytelnik", 328);
-  Book book6("Quo Vadis", "Henryk Sienkiewicz", "978-83-288-2376-0", 1896, "Czytelnik", 328);
-
-  User user1("Jan Kowalski", "jan.kowalski@mail.com", "ul. Kowalska 1", "123456789");
-  User user2("Anna Nowak", "anna.kowalska@mail.com", "ul. Nowak 1", "987654321");
-  User user3("Piot Kowalski", "piotr.kowalski@mail.com", "ul. Kowalska 2", "123456789");
-  User user4("Kasia Nowak", "kasia.nowak@mail.com", "ul. Nowak 2", "987654321");
-
   Library library;
-  library.addBook(book1);
-  library.addBook(book2);
-  library.addBook(book3);
-  library.addBook(book4);
-  library.addBook(book5);
-  library.addBook(book6);
-
-  library.addUser(user1);
-  library.addUser(user2);
-  library.addUser(user3);
-  library.addUser(user4);
+  loadFromFile(library, storage);
 
   clearScreen();
 
@@ -133,10 +115,10 @@ int main()
       removeUser(library);
       break;
     case 'r':
-
+      saveToFile(library, storage);
       break;
     case 'w':
-
+      loadFromFile(library, storage);
       break;
     case Q:
       break;
@@ -519,4 +501,43 @@ void removeUser(Library &library)
     return;
   library.removeUser(*foundUser);
   cout << "Usunięto czytelnika" << endl;
+}
+
+/**
+ * Save library to file
+ */
+void saveToFile(Library &library, Storage &storage)
+{
+  cout << "Zapisywanie do pliku" << endl;
+  std::ofstream file("./dbFile.dat");
+  if (!file.is_open())
+  {
+    cout << "Nie można otworzyć pliku" << endl;
+    return;
+  }
+
+  library.serialize(file);
+  file.close();
+  cout << "Zapisano do pliku" << endl;
+}
+
+/**
+ * Load library from file
+ */
+void loadFromFile(Library &library, Storage &storage)
+{
+  cout << "Odczytywanie z pliku" << endl;
+  std::ifstream file("./dbFile.dat", std::ios::in);
+  if (!file.is_open())
+  {
+    cout << "Nie można otworzyć pliku" << endl;
+    return;
+  }
+
+  library.deserialize(file);
+
+  // Always close the file when done
+  file.close();
+
+  cout << "Zapisano do pliku" << endl;
 }
