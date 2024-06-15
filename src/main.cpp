@@ -174,10 +174,31 @@ void findBook(Library &library)
 {
   string title;
   cout << "Znajdź książkę" << endl;
-  cout << "Podaj tytuł książki: ";
-  fflush(stdin);
-  getline(cin, title);
-  vector<Book *> foundBooks = library.findBooks(title);
+
+  cout << "(t) tytuł" << endl;
+  cout << "(y) rok wydania" << endl;
+
+  char option;
+  readOption(option);
+
+  vector<Book *> foundBooks;
+
+  if (option == 't')
+  {
+    cout << "Podaj tytuł książki: ";
+    fflush(stdin);
+    getline(cin, title);
+    foundBooks = library.findBooksByTitle(title);
+  }
+  else if (option == 'y')
+  {
+    int year;
+    cout << "Podaj rok wydania książki: ";
+    fflush(stdin);
+    cin >> year;
+    foundBooks = library.findBooksByYear(year);
+  }
+
   if (foundBooks.size() == 0)
   {
     cout << "Nie znaleziono książki" << endl;
@@ -185,7 +206,6 @@ void findBook(Library &library)
   }
 
   int index = 0;
-  char option;
 
   do
   {
