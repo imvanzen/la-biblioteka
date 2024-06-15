@@ -20,7 +20,7 @@ void addBook(Library &library);
 void editBook(Library &library);
 void editBookForm(Book *foundBook);
 void removeBook(Library &library);
-void removeBookForm(Book *foundBook);
+void removeBookForm(Library &library, Book *foundBook);
 
 void previewUsers(Library &library);
 void listUsers(Library &library);
@@ -29,7 +29,7 @@ void addUser(Library &library);
 void editUser(Library &library);
 void editUserForm(User *foundUser);
 void removeUser(Library &library);
-void removeUserForm(User *foundUser);
+void removeUserForm(Library &library, User *foundUser);
 
 void saveToFile(Library &library, Storage &storage);
 void loadFromFile(Library &library, Storage &storage);
@@ -259,7 +259,8 @@ void findBook(Library &library)
       editBookForm(foundBook);
       break;
     case 'd':
-
+      removeBookForm(library, foundBook);
+      option = 'b';
       break;
     default:
       cout << "Nieprawidłowa opcja" << endl;
@@ -524,6 +525,22 @@ void removeBook(Library &library)
 }
 
 /**
+ * Remove book form in library
+ */
+void removeBookForm(Library &library, Book *foundBook)
+{
+  cout << "Czy na pewno chcesz usunąć książkę? (t/n): ";
+  char option;
+  readOption(option);
+  if (option != 't')
+    return;
+
+  library.removeBook(*foundBook);
+
+  cout << "Usunięto książkę" << endl;
+}
+
+/**
  * Preview users
  *
  */
@@ -589,21 +606,100 @@ void listUsers(Library &library)
  */
 void findUser(Library &library)
 {
-  string name;
+
   cout << "Znajdź czytelnika" << endl;
-  cout << "Podaj imię i nazwisko czytelnika: ";
-  fflush(stdin);
-  getline(cin, name);
-  User *foundUser = library.findUser(name);
-  if (foundUser == nullptr)
+
+  cout << "(n) imie i nazwisko" << endl;
+  cout << "(e) email" << endl;
+
+  char option;
+  readOption(option);
+
+  vector<User *> foundUsers;
+
+  if (option == 'n')
+  {
+    string name;
+    cout << "Podaj imie lub/i nazwisko: ";
+    fflush(stdin);
+    getline(cin, name);
+    foundUsers = library.findUsersByName(name);
+  }
+  else if (option == 'e')
+  {
+    string email;
+    cout << "Podaj email: ";
+    fflush(stdin);
+    getline(cin, email);
+    foundUsers = library.findUsersByEmail(email);
+  }
+
+  if (foundUsers.size() == 0)
   {
     cout << "Nie znaleziono czytelnika" << endl;
     return;
   }
-  cout << "Znaleziono czytelnika: " << foundUser->getName() << endl;
-  cout << "Email: " << foundUser->getEmail() << endl;
-  cout << "Adres: " << foundUser->getAddress() << endl;
-  cout << "Telefon: " << foundUser->getPhoneNumber() << endl;
+
+  int index = 0;
+
+  do
+  {
+    clearScreen();
+    cout << "Znaleziono " << foundUsers.size() << " czytelnikow" << endl;
+    User *foundUser = foundUsers[index];
+
+    cout << "#" << index + 1 << ". Znaleziony czytelnik" << endl;
+    cout << endl;
+    cout << "Imię i nazwisko: " << foundUser->getName() << endl;
+    cout << "Email: " << foundUser->getEmail() << endl;
+    cout << "Adres: " << foundUser->getAddress() << endl;
+    cout << "Telefon: " << foundUser->getPhoneNumber() << endl;
+    cout << endl;
+
+    cout << "(e) Edytuj czytelnika" << endl;
+    cout << "(d) Usuń czytelnika" << endl;
+    cout << endl;
+    if (index < foundUsers.size() - 1)
+    {
+      cout << "(n) Następny czytelnik" << endl;
+    }
+    if (index > 0)
+    {
+      cout << "(p) Poprzedni czytelnik" << endl;
+    }
+    cout << endl;
+    cout << "(b) Powrót" << endl;
+
+    readOption(option);
+
+    switch (option)
+    {
+    case 'n':
+      if (index < foundUsers.size() - 1)
+      {
+        index++;
+      }
+      break;
+    case 'p':
+      if (index > 0)
+      {
+        index--;
+      }
+      break;
+    case 'b':
+      break;
+    case 'e':
+      editUserForm(foundUser);
+      break;
+    case 'd':
+      removeUserForm(library, foundUser);
+      option = 'b';
+      break;
+    default:
+      cout << "Nieprawidłowa opcja" << endl;
+      break;
+    }
+  } while (option != 'b');
 }
 
 /**
@@ -782,6 +878,21 @@ void removeUser(Library &library)
   readOption(option);
   if (option != 't')
     return;
+  library.removeUser(*foundUser);
+  cout << "Usunięto czytelnika" << endl;
+}
+
+/**
+ * Remove user form in library
+ */
+void removeUserForm(Library &library, User *foundUser)
+{
+  cout << "Czy na pewno chcesz usunąć czytelnika? (t/n): ";
+  char option;
+  readOption(option);
+  if (option != 't')
+    return;
+
   library.removeUser(*foundUser);
   cout << "Usunięto czytelnika" << endl;
 }
