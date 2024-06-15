@@ -112,6 +112,27 @@ vector<User *> Library::findUsersByName(const string &name)
 };
 
 /**
+ * Find users in library
+ *
+ * @param User user
+ *
+ * @return vector<User*>
+ */
+vector<User *> Library::findUsersByEmail(const string &email)
+{
+  vector<User *> users;
+  for (int i = 0; i < this->users.size(); i++)
+  {
+    if (this->users[i].getEmail().find(email) != string::npos)
+    {
+      users.push_back(&this->users[i]);
+    }
+  }
+
+  return users;
+};
+
+/**
  * Add book to library
  *
  * @param Book book
