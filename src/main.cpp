@@ -518,15 +518,7 @@ void removeBook(Library &library)
     return;
   }
   cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
-  cout << "Czy na pewno chcesz usunąć książkę? (t/n): ";
-
-  char option;
-  readOption(option);
-
-  if (option != 't')
-    return;
-  library.removeBook(*foundBook);
-  cout << "Usunięto książkę" << endl;
+  removeBookForm(library, foundBook);
 }
 
 /**
@@ -879,13 +871,7 @@ void removeUser(Library &library)
   }
 
   cout << "Znaleziono czytelnika: " << foundUser->getName() << endl;
-  cout << "Czy na pewno chcesz usunąć czytelnika? (t/n): ";
-  char option;
-  readOption(option);
-  if (option != 't')
-    return;
-  library.removeUser(*foundUser);
-  cout << "Usunięto czytelnika" << endl;
+  removeUserForm(library, foundUser);
 }
 
 /**
