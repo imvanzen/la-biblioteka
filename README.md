@@ -7,14 +7,12 @@
 ## Opis
 
 "La Biblioteka" jest projektem realizowanym w ramach akademickiego przedmiotu z programowania obiektowego.
-Celem projektu jest stworzenie programu bibliotecznego, który umożliwi zarządzanie książkami, wypożyczeniami oraz czytelnikami.
+Celem projektu jest stworzenie programu bibliotecznego, który umożliwi zarządzanie książkami.
 
 ## Funkcjonalności
 
 - Dodawanie, usuwanie i edycja książek
 - Rejestracja i zarządzanie czytelnikami
-- Wypożyczanie i zwracanie książek
-- Generowanie raportów i statystyk
 
 ## Technologie
 
