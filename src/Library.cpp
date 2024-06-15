@@ -50,6 +50,26 @@ vector<Book *> Library::findBooks(const string &title)
 };
 
 /**
+ * Find user in library
+ *
+ * @param User user
+ *
+ * @return User | nullptr
+ */
+User *Library::findUser(const string &name)
+{
+  for (int i = 0; i < this->users.size(); i++)
+  {
+    if (this->users[i].getName().find(name) != string::npos)
+    {
+      return &this->users[i];
+    }
+  }
+
+  return nullptr;
+};
+
+/**
  * Find users in library
  *
  * @param User user
@@ -68,26 +88,6 @@ vector<User *> Library::findUsers(const string &name)
   }
 
   return users;
-};
-
-/**
- * Find user in library
- *
- * @param User user
- *
- * @return User | nullptr
- */
-User *Library::findUser(const string &name)
-{
-  for (int i = 0; i < this->users.size(); i++)
-  {
-    if (this->users[i].getName().find(name) != string::npos)
-    {
-      return &this->users[i];
-    }
-  }
-
-  return nullptr;
 };
 
 /**
