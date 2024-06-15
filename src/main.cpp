@@ -5,7 +5,6 @@
 #include "Storage.h"
 #include "Book.h"
 #include "Library.h"
-#include "Menu.h"
 
 using std::cin;
 using std::cout;
