@@ -31,7 +31,6 @@ void pause()
  */
 void readOption(char &option)
 {
-  std::cout << "Wybierz opcje: ";
   fflush(stdin);
   option = getchar();
   std::cin.clear();             // Clear the error flags

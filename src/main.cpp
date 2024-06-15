@@ -69,6 +69,7 @@ int main()
     cout << "w. Odczyt z pliku" << endl;
     cout << Q << ". Wyjście" << endl;
 
+    std::cout << "Wybierz opcje: ";
     readOption(option);
 
     /**
@@ -124,6 +125,7 @@ void previewBooks(Library &library)
     cout << "5. Usuń książkę" << endl;
     cout << "b. Powrót" << endl;
 
+    std::cout << "Wybierz opcje: ";
     readOption(option);
 
     switch (option)
@@ -179,6 +181,7 @@ void findBook(Library &library)
   cout << "(y) rok wydania" << endl;
 
   char option;
+  std::cout << "Wybierz opcje: ";
   readOption(option);
 
   vector<Book *> foundBooks;
@@ -237,6 +240,7 @@ void findBook(Library &library)
     cout << endl;
     cout << "(b) Powrót" << endl;
 
+    std::cout << "Wybierz opcje: ";
     readOption(option);
 
     switch (option)
@@ -396,6 +400,7 @@ void editBookForm(Book *foundBook)
     cout << "6. Ilość stron" << endl;
     cout << "b. Powrót" << endl;
 
+    std::cout << "Wybierz opcje: ";
     readOption(option);
 
     string newValueTekst = "";
@@ -514,8 +519,8 @@ void removeBook(Library &library)
   }
   cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
   cout << "Czy na pewno chcesz usunąć książkę? (t/n): ";
-  char option;
 
+  char option;
   readOption(option);
 
   if (option != 't')
@@ -613,6 +618,7 @@ void findUser(Library &library)
   cout << "(e) email" << endl;
 
   char option;
+  std::cout << "Wybierz opcje: ";
   readOption(option);
 
   vector<User *> foundUsers;
