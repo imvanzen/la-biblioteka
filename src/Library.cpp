@@ -39,7 +39,7 @@ User *Library::findUser(const string &name)
 {
   for (int i = 0; i < this->users.size(); i++)
   {
-    if (this->users[i].getName() == name)
+    if (this->users[i].getName().find(name) != string::npos)
     {
       return &this->users[i];
     }
