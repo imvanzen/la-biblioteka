@@ -183,6 +183,7 @@ void Library::deserialize(std::istream &is)
   is >> booksSize;
   is.ignore();
 
+  this->books = vector<Book>();
   for (int i = 0; i < booksSize; i++)
   {
     string title;
@@ -209,6 +210,7 @@ void Library::deserialize(std::istream &is)
   is >> usersSize;
   is.ignore();
 
+  this->users = vector<User>();
   for (int i = 0; i < usersSize; i++)
   {
     string name;
