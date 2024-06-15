@@ -52,7 +52,7 @@ Ten projekt jest udostępniany na licencji MIT. Szczegóły można znaleźć w p
 
 ## Kontakt
 
-Jakub Reczko
+Jakub Reczko - 3 AZI
 
 Jeśli masz jakiekolwiek pytania lub sugestie, skontaktuj się z nami pod adresem:
 jakub.reczko[at]edu.wsti.com
