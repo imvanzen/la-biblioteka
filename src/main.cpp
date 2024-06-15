@@ -939,5 +939,5 @@ void loadFromFile(Library &library, Storage &storage)
   // Always close the file when done
   file.close();
 
-  cout << "Zapisano do pliku" << endl;
+  cout << "Odczytano z pliku" << endl;
 }
