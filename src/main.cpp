@@ -18,14 +18,18 @@ void listBooks(Library &library);
 void findBook(Library &library);
 void addBook(Library &library);
 void editBook(Library &library);
+void editBookForm(Book *foundBook);
 void removeBook(Library &library);
+void removeBookForm(Book *foundBook);
 
 void previewUsers(Library &library);
 void listUsers(Library &library);
 void findUser(Library &library);
 void addUser(Library &library);
 void editUser(Library &library);
+void edittUserForm(User *foundUser);
 void removeUser(Library &library);
+void removeUserForm(User *foundUser);
 
 void saveToFile(Library &library, Storage &storage);
 void loadFromFile(Library &library, Storage &storage);
@@ -182,19 +186,74 @@ void findBook(Library &library)
   cout << "Podaj tytuł książki: ";
   fflush(stdin);
   getline(cin, title);
-  Book *foundBook = library.findBook(title);
-  if (foundBook == nullptr)
+  vector<Book *> foundBooks = library.findBooks(title);
+  if (foundBooks.size() == 0)
   {
     cout << "Nie znaleziono książki" << endl;
     return;
   }
 
-  cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
-  cout << "Autor: " << foundBook->getAuthor() << endl;
-  cout << "ISBN: " << foundBook->getIsbn() << endl;
-  cout << "Rok wydania: " << foundBook->getYear() << endl;
-  cout << "Wydawca: " << foundBook->getPublisher() << endl;
-  cout << "Ilość stron: " << foundBook->getPages() << endl;
+  int index = 0;
+  char option;
+
+  do
+  {
+    clearScreen();
+    cout << "Znaleziono " << foundBooks.size() << " książek" << endl;
+    Book *foundBook = foundBooks[index];
+
+    cout << "#" << index + 1 << ". Znaleziona książka" << endl;
+    cout << endl;
+    cout << "Tytuł: " << foundBook->getTitle() << endl;
+    cout << "Autor: " << foundBook->getAuthor() << endl;
+    cout << "ISBN: " << foundBook->getIsbn() << endl;
+    cout << "Rok wydania: " << foundBook->getYear() << endl;
+    cout << "Wydawca: " << foundBook->getPublisher() << endl;
+    cout << "Ilość stron: " << foundBook->getPages() << endl;
+    cout << endl;
+
+    cout << "(e) Edytuj książkę" << endl;
+    cout << "(d) Usuń książkę" << endl;
+    cout << endl;
+    if (index < foundBooks.size() - 1)
+    {
+      cout << "(n) Następna książka" << endl;
+    }
+    if (index > 0)
+    {
+      cout << "(p) Poprzednia książka" << endl;
+    }
+    cout << endl;
+    cout << "(b) Powrót" << endl;
+    cin >> option;
+
+    switch (option)
+    {
+    case 'n':
+      if (index < foundBooks.size() - 1)
+      {
+        index++;
+      }
+      break;
+    case 'p':
+      if (index > 0)
+      {
+        index--;
+      }
+      break;
+    case 'b':
+      break;
+    case 'e':
+      editBookForm(foundBook);
+      break;
+    case 'd':
+
+      break;
+    default:
+      cout << "Nieprawidłowa opcja" << endl;
+      break;
+    }
+  } while (option != 'b');
 }
 
 /**
@@ -302,6 +361,16 @@ void editBook(Library &library)
   }
 
   cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
+
+  editBookForm(foundBook);
+}
+
+/**
+ * Edit book form in library
+ *
+ */
+void editBookForm(Book *foundBook)
+{
   char option;
   do
   {
@@ -413,7 +482,6 @@ void editBook(Library &library)
       cout << "Nieprawidłowa opcja" << endl;
       break;
     }
-
   } while (option != 'b');
 }
 
