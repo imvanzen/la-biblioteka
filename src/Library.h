@@ -26,6 +26,9 @@ public:
   Book *findBook(const string &title);
   User *findUser(const string &name);
 
+  vector<Book *> findBooks(const string &title);
+  vector<User *> findUsers(const string &name);
+
   void addBook(const Book &book);
   void addUser(const User &user);
 

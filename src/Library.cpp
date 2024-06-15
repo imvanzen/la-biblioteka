@@ -29,6 +29,48 @@ Book *Library::findBook(const string &title)
 };
 
 /**
+ * Find books in library
+ *
+ * @param Book book
+ *
+ * @return vector<Book*>
+ */
+vector<Book *> Library::findBooks(const string &title)
+{
+  vector<Book *> books;
+  for (int i = 0; i < this->books.size(); i++)
+  {
+    if (this->books[i].getTitle().find(title) != string::npos)
+    {
+      books.push_back(&this->books[i]);
+    }
+  }
+
+  return books;
+};
+
+/**
+ * Find users in library
+ *
+ * @param User user
+ *
+ * @return vector<User*>
+ */
+vector<User *> Library::findUsers(const string &name)
+{
+  vector<User *> users;
+  for (int i = 0; i < this->users.size(); i++)
+  {
+    if (this->users[i].getName().find(name) != string::npos)
+    {
+      users.push_back(&this->users[i]);
+    }
+  }
+
+  return users;
+};
+
+/**
  * Find user in library
  *
  * @param User user

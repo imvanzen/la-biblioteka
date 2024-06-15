@@ -13,12 +13,14 @@ using std::string;
 
 #define Q 'q'
 
+void previewBooks(Library &library);
 void listBooks(Library &library);
 void findBook(Library &library);
 void addBook(Library &library);
 void editBook(Library &library);
 void removeBook(Library &library);
 
+void previewUsers(Library &library);
 void listUsers(Library &library);
 void findUser(Library &library);
 void addUser(Library &library);
@@ -53,17 +55,11 @@ int main()
     /**
      * Menu
      */
-    cout << "1. Wyswietl książki" << endl;
-    cout << "2. Znajdź książkę" << endl;
-    cout << "3. Dodaj książkę" << endl;
-    cout << "4. Edytuj książkę" << endl;
-    cout << "5. Usuń książkę" << endl;
+    cout << "1. Dodaj książkę" << endl;
+    cout << "2. Przeglądaj książki" << endl;
     cout << endl;
-    cout << "6. Wyświetl czytelnikow" << endl;
-    cout << "7. Znajdź czytelnika" << endl;
-    cout << "8. Dodaj czytelnika" << endl;
-    cout << "9. Edytuj czytelnika" << endl;
-    cout << "0. Usuń czytelnika" << endl;
+    cout << "3. Dodaj czytelnika" << endl;
+    cout << "4. Przeglądaj czytelników" << endl;
     cout << endl;
     cout << "r. Zapis do pliku" << endl;
     cout << "w. Odczyt z pliku" << endl;
@@ -84,34 +80,16 @@ int main()
     switch (option)
     {
     case '1':
-      listBooks(library);
-      break;
-    case '2':
-      findBook(library);
-      break;
-    case '3':
       addBook(library);
       break;
-    case '4':
-      editBook(library);
+    case '2':
+      previewBooks(library);
       break;
-    case '5':
-      removeBook(library);
-      break;
-    case '6':
-      listUsers(library);
-      break;
-    case '7':
-      findUser(library);
-      break;
-    case '8':
+    case '3':
       addUser(library);
       break;
-    case '9':
-      editUser(library);
-      break;
-    case '0':
-      removeUser(library);
+    case '4':
+      previewUsers(library);
       break;
     case 'r':
       saveToFile(library, storage);
@@ -132,6 +110,53 @@ int main()
   return 0;
 }
 
+/**
+ * Preview books
+ *
+ */
+void previewBooks(Library &library)
+{
+  char option;
+  do
+  {
+    clearScreen();
+    cout << "1. Lista książek" << endl;
+    cout << "2. Znajdź książkę" << endl;
+    cout << "3. Dodaj książkę" << endl;
+    cout << "4. Edytuj książkę" << endl;
+    cout << "5. Usuń książkę" << endl;
+    cout << "b. Powrót" << endl;
+
+    cout << "Wybierz opcje: ";
+    fflush(stdin);
+    cin >> option;
+
+    switch (option)
+    {
+    case '1':
+      listBooks(library);
+      break;
+    case '2':
+      findBook(library);
+      break;
+    case '3':
+      addBook(library);
+      break;
+    case '4':
+      editBook(library);
+      break;
+    case '5':
+      removeBook(library);
+      break;
+    case 'b':
+      break;
+    default:
+      cout << "Nieprawidłowa opcja" << endl;
+      break;
+    }
+    pause();
+  } while (option != 'b');
+}
 /**
  * List books
  *
@@ -417,6 +442,54 @@ void removeBook(Library &library)
     return;
   library.removeBook(*foundBook);
   cout << "Usunięto książkę" << endl;
+}
+
+/**
+ * Preview users
+ *
+ */
+void previewUsers(Library &library)
+{
+  char option;
+  do
+  {
+    clearScreen();
+    cout << "1. Lista czytelników" << endl;
+    cout << "2. Znajdź czytelnika" << endl;
+    cout << "3. Dodaj czytelnika" << endl;
+    cout << "4. Edytuj czytelnika" << endl;
+    cout << "5. Usuń czytelnika" << endl;
+    cout << "b. Powrót" << endl;
+
+    cout << "Wybierz opcje: ";
+    fflush(stdin);
+    cin >> option;
+
+    switch (option)
+    {
+    case '1':
+      listUsers(library);
+      break;
+    case '2':
+      findUser(library);
+      break;
+    case '3':
+      addUser(library);
+      break;
+    case '4':
+      editUser(library);
+      break;
+    case '5':
+      removeUser(library);
+      break;
+    case 'b':
+      break;
+    default:
+      cout << "Nieprawidłowa opcja" << endl;
+      break;
+    }
+    pause();
+  } while (option != 'b');
 }
 
 /**
