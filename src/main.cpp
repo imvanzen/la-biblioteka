@@ -161,7 +161,7 @@ void previewBooks(Library &library)
 void listBooks(Library &library)
 {
   char option;
-
+  char exit = false;
   do
   {
     clearScreen();
@@ -180,7 +180,8 @@ void listBooks(Library &library)
     cout << endl;
     char option;
     std::cout << "Wybierz opcje: ";
-    readOption(option);
+    fflush(stdin);
+    option = getchar();
 
     switch (option)
     {
@@ -196,13 +197,14 @@ void listBooks(Library &library)
       library.sortBooksByYear();
       break;
     case 'b':
-      option = 'b';
+      exit = true;
       break;
     default:
       cout << "Nieprawidłowa opcja" << endl;
       break;
     }
-  } while (option != 'b');
+
+  } while (!exit);
 }
 
 /**
