@@ -18,7 +18,7 @@ Celem projektu jest stworzenie programu bibliotecznego, który umożliwi zarząd
 
 - Język programowania: C++
 - Baza danych: Dane zapisywane są do pliku
-- Narzędzia: CMake (Instalacja)[https://cmake.org/download/]
+- Narzędzia: [CMake Instalacja](https://cmake.org/download/)
 
 ## Instalacja
 
