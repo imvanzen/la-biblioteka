@@ -5,3 +5,5 @@
 void clearScreen();
 
 void pause();
+
+void readOption(char &option);

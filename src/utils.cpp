@@ -25,3 +25,15 @@ void pause()
   std::cin.ignore();
   std::cin.get();
 }
+
+/**
+ * Get the option
+ */
+void readOption(char &option)
+{
+  std::cout << "Wybierz opcje: ";
+  fflush(stdin);
+  option = getchar();
+  std::cin.clear();             // Clear the error flags
+  std::cin.ignore(10000, '\n'); // Ignore the newline character
+}

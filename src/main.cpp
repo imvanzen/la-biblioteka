@@ -27,7 +27,7 @@ void listUsers(Library &library);
 void findUser(Library &library);
 void addUser(Library &library);
 void editUser(Library &library);
-void edittUserForm(User *foundUser);
+void editUserForm(User *foundUser);
 void removeUser(Library &library);
 void removeUserForm(User *foundUser);
 
@@ -69,14 +69,7 @@ int main()
     cout << "w. Odczyt z pliku" << endl;
     cout << Q << ". Wyjście" << endl;
 
-    /**
-     * Get the option
-     */
-    cout << "Wybierz opcje: ";
-    fflush(stdin);
-    option = getchar();
-    cin.clear();             // Clear the error flags
-    cin.ignore(10000, '\n'); // Ignore the newline character
+    readOption(option);
 
     /**
      * Switch statement
@@ -131,9 +124,7 @@ void previewBooks(Library &library)
     cout << "5. Usuń książkę" << endl;
     cout << "b. Powrót" << endl;
 
-    cout << "Wybierz opcje: ";
-    fflush(stdin);
-    cin >> option;
+    readOption(option);
 
     switch (option)
     {
@@ -225,7 +216,8 @@ void findBook(Library &library)
     }
     cout << endl;
     cout << "(b) Powrót" << endl;
-    cin >> option;
+
+    readOption(option);
 
     switch (option)
     {
@@ -383,9 +375,7 @@ void editBookForm(Book *foundBook)
     cout << "6. Ilość stron" << endl;
     cout << "b. Powrót" << endl;
 
-    cout << "Wybierz opcje: ";
-    fflush(stdin);
-    cin >> option;
+    readOption(option);
 
     string newValueTekst = "";
     int newValueNumer = 0;
@@ -504,8 +494,9 @@ void removeBook(Library &library)
   cout << "Znaleziono książkę: " << foundBook->getTitle() << endl;
   cout << "Czy na pewno chcesz usunąć książkę? (t/n): ";
   char option;
-  fflush(stdin);
-  cin >> option;
+
+  readOption(option);
+
   if (option != 't')
     return;
   library.removeBook(*foundBook);
@@ -529,9 +520,7 @@ void previewUsers(Library &library)
     cout << "5. Usuń czytelnika" << endl;
     cout << "b. Powrót" << endl;
 
-    cout << "Wybierz opcje: ";
-    fflush(stdin);
-    cin >> option;
+    readOption(option);
 
     switch (option)
     {
@@ -675,8 +664,16 @@ void editUser(Library &library)
 
   cout << "Znaleziono czytelnika: " << foundUser->getName() << endl;
 
-  char option;
+  editUserForm(foundUser);
+}
 
+/**
+ * Edit user form in library
+ *
+ */
+void editUserForm(User *foundUser)
+{
+  char option;
   do
   {
     cout << "Co chcesz edytować?" << endl;
@@ -686,9 +683,7 @@ void editUser(Library &library)
     cout << "4. Telefon" << endl;
     cout << "b. Powrót" << endl;
 
-    cout << "Wybierz opcje: ";
-    fflush(stdin);
-    cin >> option;
+    readOption(option);
 
     string newValueTekst = "";
     int newValueNumber = 0;
@@ -764,8 +759,7 @@ void removeUser(Library &library)
   cout << "Znaleziono czytelnika: " << foundUser->getName() << endl;
   cout << "Czy na pewno chcesz usunąć czytelnika? (t/n): ";
   char option;
-  fflush(stdin);
-  cin >> option;
+  readOption(option);
   if (option != 't')
     return;
   library.removeUser(*foundUser);
