@@ -223,6 +223,54 @@ void Library::removeUser(const User &user)
 };
 
 /**
+ * Sort books by title
+ *
+ * @return void
+ */
+
+bool compareByTitle(const Book &a, const Book &b)
+{
+  return a.getTitle() < b.getTitle();
+}
+
+void Library::sortBooksByTitle()
+{
+  std::sort(this->books.begin(), this->books.end(), compareByTitle);
+};
+
+/**
+ * Sort books by year
+ *
+ * @return void
+ */
+
+bool compareByYear(const Book &a, const Book &b)
+{
+  return a.getYear() < b.getYear();
+}
+
+void Library::sortBooksByYear()
+{
+  std::sort(this->books.begin(), this->books.end(), compareByYear);
+};
+
+/**
+ * Sort books by author
+ *
+ * @return void
+ */
+
+bool compareByAuthor(const Book &a, const Book &b)
+{
+  return a.getAuthor() < b.getAuthor();
+}
+
+void Library::sortBooksByAuthor()
+{
+  std::sort(this->books.begin(), this->books.end(), compareByAuthor);
+};
+
+/**
  * Serialize library
  *
  * @param ostream os

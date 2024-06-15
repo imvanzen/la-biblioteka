@@ -160,12 +160,49 @@ void previewBooks(Library &library)
  */
 void listBooks(Library &library)
 {
-  cout << "Lista książek" << endl;
-  vector<Book> books = library.getBooks();
-  for (int i = 0; i < books.size(); i++)
+  char option;
+
+  do
   {
-    cout << i + 1 << ". " << books[i].getTitle() << " - " << books[i].getAuthor() << " (" << books[i].getYear() << ")" << endl;
-  }
+    clearScreen();
+    cout << "Lista książek" << endl;
+    vector<Book> books = library.getBooks();
+    for (int i = 0; i < books.size(); i++)
+    {
+      cout << i + 1 << ". " << books[i].getTitle() << " - " << books[i].getAuthor() << " (" << books[i].getYear() << ")" << endl;
+    }
+    cout << endl;
+    cout << "Sortuj rosnaco po:" << endl;
+    cout << "(t) tytule" << endl;
+    cout << "(a) autorze" << endl;
+    cout << "(r) roku wydania" << endl;
+    cout << "(b) powrot" << endl;
+    cout << endl;
+    char option;
+    std::cout << "Wybierz opcje: ";
+    readOption(option);
+
+    switch (option)
+    {
+    case 't':
+      library.sortBooksByTitle();
+      break;
+
+    case 'a':
+      library.sortBooksByAuthor();
+      break;
+
+    case 'r':
+      library.sortBooksByYear();
+      break;
+    case 'b':
+      option = 'b';
+      break;
+    default:
+      cout << "Nieprawidłowa opcja" << endl;
+      break;
+    }
+  } while (option != 'b');
 }
 
 /**

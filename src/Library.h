@@ -41,6 +41,10 @@ public:
   void removeBook(const Book &book);
   void removeUser(const User &user);
 
+  void sortBooksByTitle();
+  void sortBooksByYear();
+  void sortBooksByAuthor();
+
   void serialize(std::ostream &os) const;
   void deserialize(std::istream &is);
 };
