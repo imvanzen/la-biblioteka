@@ -186,24 +186,71 @@ void addBook(Library &library)
   int pages;
 
   cout << "Dodaj książkę" << endl;
-  cout << "Podaj tytuł książki: ";
-  fflush(stdin);
-  getline(cin, title);
-  cout << "Podaj autora książki: ";
-  fflush(stdin);
-  getline(cin, author);
-  cout << "Podaj ISBN książki: ";
-  fflush(stdin);
-  getline(cin, isbn);
-  cout << "Podaj rok wydania książki: ";
-  fflush(stdin);
-  cin >> year;
-  cout << "Podaj wydawcę książki: ";
-  fflush(stdin);
-  getline(cin, publisher);
-  cout << "Podaj ilość stron książki: ";
-  fflush(stdin);
-  cin >> pages;
+  do
+  {
+    cout << "Podaj tytuł książki: ";
+    fflush(stdin);
+    getline(cin, title);
+    if (title.empty())
+    {
+      cout << "Nieprawidłowy tytuł" << endl;
+    }
+  } while (title.empty());
+
+  do
+  {
+    cout << "Podaj autora książki: ";
+    fflush(stdin);
+    getline(cin, author);
+    if (author.empty())
+    {
+      cout << "Nieprawidłowy autor" << endl;
+    }
+  } while (author.empty());
+
+  do
+  {
+    cout << "Podaj ISBN książki: ";
+    fflush(stdin);
+    getline(cin, isbn);
+    if (isbn.empty())
+    {
+      cout << "Nieprawidłowy ISBN" << endl;
+    }
+  } while (isbn.empty());
+
+  do
+  {
+    cout << "Podaj rok wydania książki: ";
+    fflush(stdin);
+    cin >> year;
+    if (year < 0 || year > 2024)
+    {
+      cout << "Nieprawidłowy rok" << endl;
+    }
+  } while (year < 0 || year > 2024);
+
+  do
+  {
+    cout << "Podaj wydawcę książki: ";
+    fflush(stdin);
+    getline(cin, publisher);
+    if (publisher.empty())
+    {
+      cout << "Nieprawidłowy wydawca" << endl;
+    }
+  } while (publisher.empty());
+
+  do
+  {
+    cout << "Podaj ilość stron książki: ";
+    fflush(stdin);
+    cin >> pages;
+    if (pages < 0)
+    {
+      cout << "Nieprawidłowa ilość stron" << endl;
+    }
+  } while (pages < 0);
 
   Book book(title, author, isbn, year, publisher, pages);
   library.addBook(book);
@@ -252,44 +299,86 @@ void editBook(Library &library)
     switch (option)
     {
     case '1':
-      cout << "Podaj nowy tytuł książki: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowy tytuł książki: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+        if (newValueTekst.empty())
+        {
+          cout << "Nieprawidłowy tytuł" << endl;
+        }
+      } while (newValueTekst.empty());
       foundBook->setTitle(newValueTekst);
       cout << "Zmieniono tytuł książki na: " << foundBook->getTitle() << endl;
       break;
     case '2':
-      cout << "Podaj nowego autora książki: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowego autora książki: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+        if (newValueTekst.empty())
+        {
+          cout << "Nieprawidłowy autor" << endl;
+        }
+      } while (newValueTekst.empty());
       foundBook->setAuthor(newValueTekst);
       cout << "Zmieniono autora książki na: " << foundBook->getAuthor() << endl;
       break;
     case '3':
-      cout << "Podaj nowy ISBN książki: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowy ISBN książki: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+        if (newValueTekst.empty())
+        {
+          cout << "Nieprawidłowy ISBN" << endl;
+        }
+      } while (newValueTekst.empty());
       foundBook->setIsbn(newValueTekst);
       cout << "Zmieniono ISBN książki na: " << foundBook->getIsbn() << endl;
       break;
     case '4':
-      cout << "Podaj nowy rok wydania książki: ";
-      fflush(stdin);
-      cin >> newValueNumer;
+      do
+      {
+        cout << "Podaj nowy rok wydania książki: ";
+        fflush(stdin);
+        cin >> newValueNumer;
+        if (newValueNumer < 0 || newValueNumer > 2024)
+        {
+          cout << "Nieprawidłowy rok" << endl;
+        }
+      } while (newValueNumer < 0 || newValueNumer > 2024);
       foundBook->setYear(newValueNumer);
       cout << "Zmieniono rok wydania książki na: " << foundBook->getYear() << endl;
       break;
     case '5':
-      cout << "Podaj nowego wydawcę książki: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowego wydawcę książki: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+        if (newValueTekst.empty())
+        {
+          cout << "Nieprawidłowy wydawca" << endl;
+        }
+      } while (newValueTekst.empty());
       foundBook->setPublisher(newValueTekst);
       cout << "Zmieniono wydawcę książki na: " << foundBook->getPublisher() << endl;
       break;
     case '6':
-      cout << "Podaj nową ilość stron książki: ";
-      fflush(stdin);
-      cin >> newValueNumer;
+      do
+      {
+        cout << "Podaj nową ilość stron książki: ";
+        fflush(stdin);
+        cin >> newValueNumer;
+        if (newValueNumer < 0)
+        {
+          cout << "Nieprawidłowa ilość stron" << endl;
+        }
+      } while (newValueNumer < 0);
       foundBook->setPages(newValueNumer);
       cout << "Zmieniono ilość stron książki na: " << foundBook->getPages() << endl;
       break;
@@ -378,18 +467,46 @@ void addUser(Library &library)
   string phone;
 
   cout << "Dodaj czytelnika" << endl;
-  cout << "Podaj imię i nazwisko czytelnika: ";
-  fflush(stdin);
-  getline(cin, name);
-  cout << "Podaj email czytelnika: ";
-  fflush(stdin);
-  getline(cin, email);
-  cout << "Podaj adres czytelnika: ";
-  fflush(stdin);
-  getline(cin, address);
-  cout << "Podaj telefon czytelnika: ";
-  fflush(stdin);
-  getline(cin, phone);
+  do
+  {
+    cout << "Podaj imię i nazwisko czytelnika: ";
+    fflush(stdin);
+    getline(cin, name);
+    if (name.empty())
+    {
+      cout << "Nieprawidłowe imię i nazwisko" << endl;
+    }
+  } while (name.empty());
+  do
+  {
+    cout << "Podaj email czytelnika: ";
+    fflush(stdin);
+    getline(cin, email);
+    if (email.empty())
+    {
+      cout << "Nieprawidłowy email" << endl;
+    }
+  } while (email.empty());
+  do
+  {
+    cout << "Podaj adres czytelnika: ";
+    fflush(stdin);
+    getline(cin, address);
+    if (address.empty())
+    {
+      cout << "Nieprawidłowy adres" << endl;
+    }
+  } while (address.empty());
+  do
+  {
+    cout << "Podaj telefon czytelnika: ";
+    fflush(stdin);
+    getline(cin, phone);
+    if (phone.empty())
+    {
+      cout << "Nieprawidłowy telefon" << endl;
+    }
+  } while (phone.empty());
 
   User user(name, email, address, phone);
   library.addUser(user);
@@ -438,30 +555,42 @@ void editUser(Library &library)
     switch (option)
     {
     case '1':
-      cout << "Podaj nowe imię i nazwisko czytelnika: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowe imię i nazwisko czytelnika: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+      } while (newValueTekst.empty());
       foundUser->setName(newValueTekst);
       cout << "Zmieniono imię i nazwisko czytelnika na: " << foundUser->getName() << endl;
       break;
     case '2':
-      cout << "Podaj nowy email czytelnika: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowy email czytelnika: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+      } while (newValueTekst.empty());
       foundUser->setEmail(newValueTekst);
       cout << "Zmieniono email czytelnika na: " << foundUser->getEmail() << endl;
       break;
     case '3':
-      cout << "Podaj nowy adres czytelnika: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowy adres czytelnika: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+      } while (newValueTekst.empty());
       foundUser->setAddress(newValueTekst);
       cout << "Zmieniono adres czytelnika na: " << foundUser->getAddress() << endl;
       break;
     case '4':
-      cout << "Podaj nowy telefon czytelnika: ";
-      fflush(stdin);
-      getline(cin, newValueTekst);
+      do
+      {
+        cout << "Podaj nowy telefon czytelnika: ";
+        fflush(stdin);
+        getline(cin, newValueTekst);
+      } while (newValueTekst.empty());
       foundUser->setPhoneNumber(newValueTekst);
       cout << "Zmieniono telefon czytelnika na: " << foundUser->getPhoneNumber() << endl;
       break;
